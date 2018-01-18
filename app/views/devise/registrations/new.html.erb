@@ -19,9 +19,13 @@
     </div>
 
     <div class="field mt3">
-      <input id="date" type="date">
+      <input id="date" type="date" class="pa2 input-reset ba bg-transparent w-100">
     </div>
 
+    <div class="field mt3 flex">
+      <input id="start-time" type="time" class="w-50 mr3 pa2 input-reset ba bg-transparent">
+      <input id="end-time" type="time" class="w-50 pa2 input-reset ba bg-transparent">
+    </div>
 
     <div class="field mt3">
       <%= f.label :email, class: 'db fw6 lh-copy f6' %><br />
