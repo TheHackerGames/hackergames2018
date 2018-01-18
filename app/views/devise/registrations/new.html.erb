@@ -21,6 +21,14 @@
       <%= f.label :password_confirmation, class: 'db fw6 lh-copy f6' %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'pa2 input-reset ba bg-transparent w-100' %>
     </div>
+
+    <div class="mt3">
+      <label class="db fw4 lh-copy f6" for="name">Location</label>
+      <input class="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="location" id="location">
+    </div>
+
+    <input type="hidden" type="text" name="lat" id="lat">
+    <input type="hidden" type="text" name="lng" id="lng">
   </fieldset>
 
   <div class="actions mt3">
