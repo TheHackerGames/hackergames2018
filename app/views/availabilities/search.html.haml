@@ -12,7 +12,8 @@ Search results
   %tbody
     - @availabilities.each do |availability|
       %tr
-        %td= image_tag availability.user.avatar_url
+        %td
+          %img{src: availability.user.avatar_url}
         %td= availability.user.name
         %td= availability.name
         %td= format_time(availability.start_datetime)
