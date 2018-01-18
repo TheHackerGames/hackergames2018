@@ -7,13 +7,13 @@
     = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tag
-    %meta{name:"viewport", content: "width=device-width, initial-scale=1"}>
+    %meta{name:"viewport", content: "width=device-width, initial-scale=1"}
+    %title
+      Local Hero
   %body
     %header.tc.pv3.shadow-2.ttu.mb4
       = link_to root_path, class: 'f5 measure-wide black no-underline fw6 tracked' do
-        Coffee with
-        %br
-        a Hero
+        Local hero
     .flex.justify-center.notice= notice
     .flex.justify-center.alert= alert
     .flex.justify-center

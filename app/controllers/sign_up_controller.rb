@@ -3,6 +3,9 @@ class SignUpController < ApplicationController
     new_state
   end
 
+  def meet_type_step
+  end
+
   def name_step
     merge_state(type: params[:type]) if params.include? :type
   end

@@ -1,5 +1,5 @@
 %h2.tc
-  Let's get started
+  Who do you want to meet?
 
 %form
   .fieldset.ba.b--transparent.ph0.mh0
@@ -7,10 +7,10 @@
       .flex.ttu
         %input#user-type-hero.dn.user-type-switch{:name => "user-type", :type => "radio"}/
         %label.outline.w-50.pv4.ph2.mr3.tc.flex.justify-center.items-center.pointer.tracked{:for => "user-type-hero"}
-          I'm a veteran
+          Other veterans
         %input#user-type-civilian.dn.user-type-switch{:name => "user-type", :type => "radio"}/
         %label.outline.w-50.pv4.ph2.tc.flex.justify-center.items-center.pointer.tracked{:for => "user-type-civilian"}
-          I'm not a veteran
+          Non-military
 
   %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
 

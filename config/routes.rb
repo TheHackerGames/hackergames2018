@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   scope controller: :sign_up, path: 'sign_up', as: 'sign_up' do
     get :type_step
+    get :meet_type_step
     get :name_step
     get :email_step
     get :photo_step
