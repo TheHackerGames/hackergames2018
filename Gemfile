@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
+gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
