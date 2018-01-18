@@ -15,10 +15,17 @@ class SignUpController < ApplicationController
 
   def photo_step
     merge_state(name: params[:name]) if params.include? :name
+
+    @image = Image.new
+  end
+
+  def upload_photo
+    image = Image.create!(file: params[:image][:file])
+    merge_state(image_id: image.id)
+    redirect_to action: :shop_step
   end
 
   def shop_step
-    merge_state(avatar_url: params[:avatar_url]) if params.include? :avatar_url
   end
 
   def date_step
@@ -31,6 +38,7 @@ class SignUpController < ApplicationController
     user = User.create!(
       name: current_state[:name],
       avatar_url: current_state[:avatar_url],
+      image_id: current_state[:image_id],
       email: current_state[:email],
       password: current_state[:password],
     )
@@ -49,12 +57,12 @@ class SignUpController < ApplicationController
   private
 
   def current_state
-    cookies[:state] || {}
+    JSON.parse(cookies.encrypted[:state] || '{}').symbolize_keys
   end
   helper_method :current_state
 
-  def new_state
-    cookies[:state] = {}.to_json
+  def new_state(state = {})
+    cookies.encrypted[:state] = state.to_json
   end
 
   def merge_state(state)

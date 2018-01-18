@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get :name_step
     get :email_step
     get :photo_step
+    post :upload_photo
     get :shop_step
     get :date_step
     get :time_step
