@@ -6,6 +6,9 @@
     = javascript_include_tag '//maps.googleapis.com/maps/api/js?key=AIzaSyBcaaM-TzM9DUuqCqV4khAFuI6S_C3YDWs&libraries=places', 'data-turbolinks-track': 'reload'
     = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %meta{name:"viewport", content: "width=device-width, initial-scale=1"}>
+
   %body
     %header.tc.pv3.shadow-2.ttu
       = link_to root_path, class: 'f5 measure-wide black no-underline fw6 tracked' do

@@ -1,0 +1,17 @@
+%h2.tc
+  Let's get started
+
+%form
+  .fieldset.ba.b--transparent.ph0.mh0
+    .field.mt3
+      .flex.ttu
+        %input#user-type-hero.dn.user-type-switch{:name => "user-type", :type => "radio"}/
+        %label.outline.w-50.pv4.mr3.tc.flex.justify-center.items-center.pointer{:for => "user-type-hero"}
+          I'm a hero
+        %input#user-type-civilian.dn.user-type-switch{:name => "user-type", :type => "radio"}/
+        %label.outline.w-50.pv4.tc.pointer{:for => "user-type-civilian"}
+          I want to meet a hero
+
+        %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+
+= render 'shared/submit-form'
