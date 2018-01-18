@@ -1,15 +1,2 @@
-Your Meetings
-
-%br
-%table
-  %thead
-    %th User
-    %th Where
-    %th Created At
-  %tbody
-    - @meetings.each do |meeting|
-      %tr
-        - user = meeting.meeting_with!(current_user)
-        %td= "#{user.name} (##{user.id})"
-        %td= meeting.availability.name
-        %td= format_time(meeting.created_at)
+Your next meetings
+= render partial: 'meetings', locals: { meetings: @meetings }

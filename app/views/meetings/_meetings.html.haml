@@ -1,0 +1,15 @@
+%table
+  %thead
+    %th Who
+    %th Where
+    %th When
+  %tbody
+    - meetings.each do |meeting|
+      - user = meeting.availability.user
+      %tr
+        %td
+          = image_tag user.avatar_url
+          %br
+          = user.name
+        %td= meeting.availability.name
+        %td= format_time(meeting.created_at)
