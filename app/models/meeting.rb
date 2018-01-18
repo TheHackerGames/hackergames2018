@@ -3,7 +3,7 @@ class Meeting < ApplicationRecord
   belongs_to :user
 
   def meeting_with!(other_user)
-    raise if [user, availability.user].include? other_user
+    raise unless [user, availability.user].include? other_user
 
     if user == other_user
       availability.user

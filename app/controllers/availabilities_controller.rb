@@ -1,5 +1,6 @@
 class AvailabilitiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_availability, only: %i[edit update request_meeting]
 
   def index
     @availabilities = Availability.where(user: current_user)
@@ -12,7 +13,6 @@ class AvailabilitiesController < ApplicationController
   end
 
   def edit
-    @availability = Availability.find(params[:id])
   end
 
   def create
@@ -21,8 +21,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def update
-    availability = Availability.find(params[:id])
-    availability.update!(availability_params)
+    @availability.update!(availability_params)
     redirect_to action: :index
   end
 
@@ -34,7 +33,8 @@ class AvailabilitiesController < ApplicationController
   end
 
   def request_meeting
-    redirect_to availabilities_path, notice: 'Request sent'
+    Meeting.create!(user: current_user, availability: @availability)
+    redirect_to meetings_path, notice: 'Request sent'
   end
 
   private
@@ -45,5 +45,9 @@ class AvailabilitiesController < ApplicationController
 
   def search_params
     params.permit!.to_h.symbolize_keys
+  end
+
+  def find_availability
+    @availability = Availability.find(params[:id])
   end
 end
