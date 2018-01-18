@@ -1,13 +1,13 @@
 = form_for availability do |f|
-  Name: #{f.text_field :name}
+  = f.hidden_field :name, data: { location_name: 1 }
+  = f.hidden_field :address, data: { location_address: 1 }
+  = f.hidden_field :latitude, data: { location_latitude: 1 }
+  = f.hidden_field :longitude, data: { location_longitude: 1 }
+  = f.hidden_field :gmaps_place_id, data: { location_gmaps_place_id: 1 }
+
+  Where do you want to have coffee?
   %br
-  Address: #{f.text_field :address}
-  %br
-  Latitude: #{f.text_field :latitude}
-  %br
-  Longitude: #{f.text_field :longitude}
-  %br
-  Gmaps Place ID: #{f.text_field :gmaps_place_id}
+  = text_field_tag :location, '', data: { location_type: 'establishment' }
   %br
   Start datetime: #{f.text_field :start_datetime}
   %br
