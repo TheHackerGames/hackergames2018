@@ -1,0 +1,12 @@
+Your profile
+%br
+
+%img{ src: current_user.avatar_url }
+%br
+
+= form_for current_user do |f|
+  Name: #{f.text_field :name}
+  %br
+  Avatar: #{f.text_field :avatar_url}
+  %br
+  = f.submit 'Save'

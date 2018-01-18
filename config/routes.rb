@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'profile', to: 'home#profile'
+  get 'profile', to: 'users#profile'
+
+  resources :users, only: [:update]
 end
