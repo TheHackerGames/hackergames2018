@@ -1,0 +1,57 @@
+!!!
+%html.no-js{lang: 'en'}
+  %head
+    = javascript_include_tag 'application'
+    %meta{charset: "utf-8"}
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
+
+    = yield :head
+
+    = csrf_meta_tags
+
+    %title= @page_title
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    -# define icons used in main navigation
+    - use_icons ['bell', 'close_b']
+    = include_svg_sprite
+
+    - if @menu_section
+      #js-main-menu-section{data: {'section' => @menu_section}}
+
+    != gtm_body_prepend_javascript
+    /[if lt IE 8]
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    / Add your site or application content here
+    - if @use_lite_header
+      = render partial: 'shared/header_lite_test'
+    - else
+      = render partial: 'shared/header'
+
+    - if params[:partner] == 'listers'
+      = render partial: 'listers/header'
+    - if params[:partner] == 'hsd'
+      = render partial: 'hsd/header'
+
+    = content_for?(:content) ? yield(:content) : yield
+    = render partial: 'shared/footer'
+
+    = Gon::Base.render_data
+    - if @live_chat_enabled
+      = gtm_live_chat_event
+
+    = javascript_include_tag 'polyfill'
+    = javascript_pack_tag 'application', defer: true
+    = yield :page_javascript
+
+
+    = javascript_pack_tag 'notification_menu'
+
+    %div{data: {notification_drawer: true, notifier_service_endpoint: AppConfig.notifier_service_endpoint, pusher_app_key: AppConfig.pusher_app_key}}
+    = javascript_pack_tag 'notification_drawer'
+
+  - unless params[:above_fold].nil?
+    = stylesheet_link_tag('application', media: 'all')
