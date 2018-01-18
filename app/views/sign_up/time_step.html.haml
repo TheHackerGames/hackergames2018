@@ -1,0 +1,20 @@
+%h2.tc
+  Let's get started
+
+%form
+  .fieldset.ba.b--transparent.ph0.mh0
+    %p Same time for all dates
+
+    .field.mt3.flex
+      .w-50.mr3
+        %label.db.fw6.lh-copy.f6
+          Start
+        %input#start-time.pa2.input-reset.ba.bg-transparent.w-100{:type => "time"}/
+      .w-50
+        %label.db.fw6.lh-copy.f6
+          End
+        %input#end-time.pa2.input-reset.ba.bg-transparent.w-100{:type => "time"}/
+
+  %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+
+= render 'shared/submit-form'
