@@ -6,12 +6,14 @@ Your Availabilities
     %th Name
     %th From
     %th To
+    %th Actions
   %tbody
     - @availabilities.each do |availability|
       %tr
         %td= availability.name
         %td= format_time(availability.start_datetime)
         %td= format_time(availability.end_datetime)
+        %td= link_to 'Edit', edit_availability_path(availability)
 
 %br
 = link_to 'Add', new_availability_path

@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
 
-  resources :users, only: [:update]
-  resources :availabilities, only: [:new, :create, :index]
+  resources :users, only: %i[update]
+  resources :availabilities, only: %i[index new edit create update]
 end

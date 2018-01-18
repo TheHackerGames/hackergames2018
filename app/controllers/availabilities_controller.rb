@@ -1,20 +1,34 @@
 class AvailabilitiesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @availabilities = Availability.where(user: current_user)
+  end
+
   def new
-    @availability = Availability.new
+    start_datetime = current_time = Time.zone.now
+    end_datetime = current_time + 1.hour
+    @availability = Availability.new(start_datetime: start_datetime, end_datetime: end_datetime)
+  end
+
+  def edit
+    @availability = Availability.find(params[:id])
   end
 
   def create
-    Availability.create!(create_params.merge(user: current_user))
+    Availability.create!(availability_params.merge(user: current_user))
     redirect_to action: :index
   end
 
-  def create_params
-    params.require(:availability).permit!.to_h.symbolize_keys
+  def update
+    availability = Availability.find(params[:id])
+    availability.update!(availability_params)
+    redirect_to action: :index
   end
 
-  def index
-    @availabilities = Availability.where(user: current_user)
+  private
+
+  def availability_params
+    params.require(:availability).permit!.to_h.symbolize_keys
   end
 end
