@@ -1,7 +1,8 @@
 = form_tag search_availabilities_path, method: :get do
-  = hidden_field_tag :latitude, 50
-  = hidden_field_tag :longitude, 10
-  Location #{text_field_tag :location}
+  = hidden_field_tag :latitude, nil, data: { location_latitude: 1 }
+  = hidden_field_tag :longitude, nil, data: { location_longitude: 1 }
+
+  Location #{text_field_tag :location, nil, data: { location_autocomplete: 1 }}
   %br
   Around #{text_field_tag :time, Time.zone.now}
   %br

@@ -7,7 +7,7 @@
 
   Where do you want to have coffee?
   %br
-  = text_field_tag :location, '', data: { location_type: 'establishment' }
+  = text_field_tag :location, '', data: { location_autocomplete: 1, location_type: 'establishment' }
   %br
   Start datetime: #{f.text_field :start_datetime}
   %br

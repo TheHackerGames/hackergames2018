@@ -1,5 +1,5 @@
 $(function() {
-  $locationAutocompleteInput = $("#location");
+  $locationAutocompleteInput = $("[data-location-autocomplete]");
 
   if ($locationAutocompleteInput.length == 0) return
 
