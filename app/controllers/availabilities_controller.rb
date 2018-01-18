@@ -33,6 +33,10 @@ class AvailabilitiesController < ApplicationController
     @availabilities = Availability.where('? BETWEEN start_datetime AND end_datetime', time)
   end
 
+  def request_meeting
+    redirect_to availabilities_path, notice: 'Request sent'
+  end
+
   private
 
   def availability_params

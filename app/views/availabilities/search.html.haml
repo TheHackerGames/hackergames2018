@@ -17,4 +17,4 @@ Search results
         %td= availability.name
         %td= format_time(availability.start_datetime)
         %td= format_time(availability.end_datetime)
-        %td= link_to 'Edit', edit_availability_path(availability)
+        %td= link_to 'Meet!', request_meeting_availability_path(availability), method: :post

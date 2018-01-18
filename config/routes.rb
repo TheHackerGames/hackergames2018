@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :availabilities, only: %i[index new edit create update] do
     get :search_form, on: :collection
     get :search, on: :collection
+    post :request_meeting, on: :member
   end
 end
