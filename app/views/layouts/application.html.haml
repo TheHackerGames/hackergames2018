@@ -11,9 +11,14 @@
     %title
       Local Hero
   %body
-    %header.tc.pv3.shadow-2.ttu.mb4
+    %header.tc.pv4.shadow-2.ttu.mb4.relative.flex.justify-center.items-center
+      %a.absolute.left-1{href: 'javascript:;', onclick: "window.history.go(-1); return false;"}
+        %svg.flex.justify-center.items-center{:version => "1.1", :viewbox => "0 0 24 24", height: '24px', width: '24px', stroke: 'grey', 'stroke-width': '2px', fill: 'none'}
+          %path{:d => "M17 2L7 12l10 10", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-miterlimit" => "10", "vector-effect" => "non-scaling-stroke"}
+
       = link_to root_path, class: 'f5 measure-wide black no-underline fw6 tracked' do
         Local hero
+
     .flex.justify-center.notice= notice
     .flex.justify-center.alert= alert
     .flex.justify-center
