@@ -6,12 +6,12 @@
     .field.mt3
       .flex.ttu
         %input#user-type-hero.dn.user-type-switch{:name => "user-type", :type => "radio"}/
-        %label.outline.w-50.pv4.mr3.tc.flex.justify-center.items-center.pointer{:for => "user-type-hero"}
-          I'm a hero
+        %label.outline.w-50.pv4.ph2.mr3.tc.flex.justify-center.items-center.pointer.tracked{:for => "user-type-hero"}
+          I'm a veteran
         %input#user-type-civilian.dn.user-type-switch{:name => "user-type", :type => "radio"}/
-        %label.outline.w-50.pv4.tc.pointer{:for => "user-type-civilian"}
-          I want to meet a hero
+        %label.outline.w-50.pv4.ph2.tc.pointer.tracked{:for => "user-type-civilian"}
+          I'm not a veteran
 
-        %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+  %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
 
 = render 'shared/submit-form'

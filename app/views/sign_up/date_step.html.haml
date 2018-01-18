@@ -1,0 +1,11 @@
+%h2.tc
+  Select a date that suits to meet
+
+%form
+  .fieldset.ba.b--transparent.ph0.mh0
+    .field.mt3
+      %input#date.pa2.input-reset.ba.bg-transparent.w-100{:type => "date"}/
+
+  %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+
+= render 'shared/submit-form'
