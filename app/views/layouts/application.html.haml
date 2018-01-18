@@ -1,57 +1,19 @@
 !!!
 %html.no-js{lang: 'en'}
   %head
-    = javascript_include_tag 'application'
-    %meta{charset: "utf-8"}
-    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
-
-    = yield :head
-
-    = csrf_meta_tags
-
-    %title= @page_title
-
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    '//unpkg.com/tachyons@4.9.0/css/tachyons.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag '//maps.googleapis.com/maps/api/js?key=AIzaSyBcaaM-TzM9DUuqCqV4khAFuI6S_C3YDWs&libraries=places', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
   %body
-    -# define icons used in main navigation
-    - use_icons ['bell', 'close_b']
-    = include_svg_sprite
-
-    - if @menu_section
-      #js-main-menu-section{data: {'section' => @menu_section}}
-
-    != gtm_body_prepend_javascript
-    /[if lt IE 8]
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    / Add your site or application content here
-    - if @use_lite_header
-      = render partial: 'shared/header_lite_test'
-    - else
-      = render partial: 'shared/header'
-
-    - if params[:partner] == 'listers'
-      = render partial: 'listers/header'
-    - if params[:partner] == 'hsd'
-      = render partial: 'hsd/header'
-
-    = content_for?(:content) ? yield(:content) : yield
-    = render partial: 'shared/footer'
-
-    = Gon::Base.render_data
-    - if @live_chat_enabled
-      = gtm_live_chat_event
-
-    = javascript_include_tag 'polyfill'
-    = javascript_pack_tag 'application', defer: true
-    = yield :page_javascript
-
-
-    = javascript_pack_tag 'notification_menu'
-
-    %div{data: {notification_drawer: true, notifier_service_endpoint: AppConfig.notifier_service_endpoint, pusher_app_key: AppConfig.pusher_app_key}}
-    = javascript_pack_tag 'notification_drawer'
-
-  - unless params[:above_fold].nil?
-    = stylesheet_link_tag('application', media: 'all')
+    %header.tc.pv3.shadow-2.ttu
+      = link_to root_path, class: 'f5 measure-wide black no-underline fw6 tracked' do
+        Coffee with
+        %br
+        a Hero
+    .flex.justify-center.notice= notice
+    .flex.justify-center.alert= alert
+    .flex.justify-center
+      .mw6.ph3.ph5-ns.w-100
+        = yield
