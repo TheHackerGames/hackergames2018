@@ -7,6 +7,9 @@ class SignUpController < ApplicationController
     merge_state(type: params[:type]) if params.include? :type
   end
 
+  def email_step
+  end
+
   def photo_step
     merge_state(name: params[:name]) if params.include? :name
   end
