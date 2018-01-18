@@ -1,9 +1,17 @@
 Your Availabilities
 
 %br
-- @availabilities.each do |availability|
-  %br
-  = availability.inspect
+%table
+  %thead
+    %th Name
+    %th From
+    %th To
+  %tbody
+    - @availabilities.each do |availability|
+      %tr
+        %td= availability.name
+        %td= format_time(availability.start_datetime)
+        %td= format_time(availability.end_datetime)
 
 %br
 = link_to 'Add', new_availability_path
