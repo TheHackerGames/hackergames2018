@@ -1,14 +1,14 @@
 %h2.tc
   Let's get started
 
-%form
+%form{action: sign_up_meet_type_step_path, method: :get}
   .fieldset.ba.b--transparent.ph0.mh0
     .field.mt3
       .flex.ttu
-        %input#user-type-hero.dn.user-type-switch{:name => "user-type", :type => "radio"}
+        %input#user-type-hero.dn.user-type-switch{name: "user_type", value: "hero", type: "radio"}
         %label.outline.w-50.pv4.ph2.mr3.tc.flex.justify-center.items-center.pointer.tracked{:for => "user-type-hero"}
           I'm a veteran
-        %input#user-type-civilian.dn.user-type-switch{:name => "user-type", :type => "radio"}
+        %input#user-type-civilian.dn.user-type-switch{name: "user_type", value: "civilian", type: "radio"}
         %label.outline.w-50.pv4.ph2.tc.flex.justify-center.items-center.pointer.tracked{:for => "user-type-civilian"}
           I'm not a veteran
 

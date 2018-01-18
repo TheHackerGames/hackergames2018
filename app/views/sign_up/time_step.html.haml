@@ -1,7 +1,7 @@
 %h2.tc
   Let's get started
 
-%form
+%form{action: sign_up_final_step_path, method: :get}
   .fieldset.ba.b--transparent.ph0.mh0
     %p Same time for all dates
 
@@ -9,11 +9,11 @@
       .w-50.mr3
         %label.db.fw6.lh-copy.f6
           Start
-        %input#start-time.pa2.input-reset.ba.bg-transparent.w-100{:type => "time"}/
+        %input#start-time.pa2.input-reset.ba.bg-transparent.w-100{name: "start_time", type: "time"}/
       .w-50
         %label.db.fw6.lh-copy.f6
           End
-        %input#end-time.pa2.input-reset.ba.bg-transparent.w-100{:type => "time"}/
+        %input#end-time.pa2.input-reset.ba.bg-transparent.w-100{name: "end_time", type: "time"}/
 
   %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
 

@@ -1,20 +1,26 @@
 class SignUpController < ApplicationController
+  before_action :log_current_state
+  after_action :log_current_state
+
   def type_step
     new_state
   end
 
   def meet_type_step
+    merge_state(user_type: params[:user_type]) if params.include? :user_type
   end
 
   def name_step
-    merge_state(type: params[:type]) if params.include? :type
+    merge_state(meet_user_type: params[:meet_user_type]) if params.include? :meet_user_type
   end
 
   def email_step
+    merge_state(first_name: params[:first_name]) if params.include? :first_name
+    merge_state(last_name: params[:last_name]) if params.include? :last_name
   end
 
   def photo_step
-    merge_state(name: params[:name]) if params.include? :name
+    merge_state(email: params[:email]) if params.include? :email
 
     @image = Image.new
   end
@@ -22,7 +28,7 @@ class SignUpController < ApplicationController
   def upload_photo
     image = Image.create!(file: params[:image][:file])
     merge_state(image_id: image.id)
-    redirect_to action: :shop_step
+    redirect_to action: :date_step
   end
 
   def shop_step
@@ -67,5 +73,9 @@ class SignUpController < ApplicationController
 
   def merge_state(state)
     new_state(current_state.merge(state))
+  end
+
+  def log_current_state
+    logger.info "  Current state: #{current_state}"
   end
 end
