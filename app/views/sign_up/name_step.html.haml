@@ -1,0 +1,17 @@
+%h2.tc
+  Great, let's get some details.
+
+%form
+  .fieldset.ba.b--transparent.ph0.mh0
+    .field.mt3
+      %label.db.fw6.lh-copy.f6
+        First name
+      %input.pa2.input-reset.ba.bg-transparent.w-100{:type => "text"}
+    .field.mt3
+      %label.db.fw6.lh-copy.f6
+        Last name
+      %input.pa2.input-reset.ba.bg-transparent.w-100{:type => "text"}
+
+  %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+
+= render 'shared/submit_form'
