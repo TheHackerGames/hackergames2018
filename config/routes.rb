@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     get :search, on: :collection
     post :request_meeting, on: :member
   end
+  resources :meetings, only: [:create, :index]
 end
