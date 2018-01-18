@@ -1,0 +1,3 @@
+.user-type-switch:checked + label {
+  background-color: #edcc47;
+}
