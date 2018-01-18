@@ -1,0 +1,19 @@
+New Availability
+%br
+
+= form_for @availability do |f|
+  Name: #{f.text_field :name}
+  %br
+  Address: #{f.text_field :address}
+  %br
+  Latitude: #{f.text_field :latitude}
+  %br
+  Longitude: #{f.text_field :longitude}
+  %br
+  Gmaps Place ID: #{f.text_field :gmaps_place_id}
+  %br
+  Start datetime: #{f.text_field :start_datetime}
+  %br
+  End datetime: #{f.text_field :end_datetime}
+  %br
+  = f.submit 'Save'
