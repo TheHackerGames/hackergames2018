@@ -26,9 +26,20 @@ class AvailabilitiesController < ApplicationController
     redirect_to action: :index
   end
 
+  def search_form; end
+
+  def search
+    time = search_params[:time]
+    @availabilities = Availability.where('? BETWEEN start_datetime AND end_datetime', time)
+  end
+
   private
 
   def availability_params
     params.require(:availability).permit!.to_h.symbolize_keys
+  end
+
+  def search_params
+    params.permit!.to_h.symbolize_keys
   end
 end

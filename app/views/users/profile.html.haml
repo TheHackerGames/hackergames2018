@@ -1,7 +1,7 @@
 Your profile
 %br
 
-%img{ src: current_user.avatar_url }
+%img{ src: current_user.avatar_url, width: 128, height: 128 }
 %br
 
 = form_for current_user do |f|
@@ -13,3 +13,6 @@ Your profile
 
 See when you're available
 = link_to 'Avaialbilities', availabilities_path
+
+Search for
+= link_to 'available people', search_form_availabilities_path

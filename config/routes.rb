@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
 
   resources :users, only: %i[update]
-  resources :availabilities, only: %i[index new edit create update]
+  resources :availabilities, only: %i[index new edit create update] do
+    get :search_form, on: :collection
+    get :search, on: :collection
+  end
 end

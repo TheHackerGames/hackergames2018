@@ -1,8 +1,10 @@
-Your Availabilities
+Search results
 
 %br
 %table
   %thead
+    %th
+    %th Name
     %th Where
     %th From
     %th To
@@ -10,9 +12,9 @@ Your Availabilities
   %tbody
     - @availabilities.each do |availability|
       %tr
+        %td= image_tag availability.user.avatar_url
+        %td= availability.user.name
         %td= availability.name
         %td= format_time(availability.start_datetime)
         %td= format_time(availability.end_datetime)
         %td= link_to 'Edit', edit_availability_path(availability)
-%br
-= link_to 'Add', new_availability_path
