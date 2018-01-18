@@ -23,3 +23,26 @@ $(function() {
   autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete.addListener("place_changed", fillCoordinatesFields);
 });
+
+$(function initMap() {
+  var mapContainer = document.getElementById('map');
+  var mapData = mapContainer.dataset;
+  var markers = JSON.parse(mapData.markers)
+
+  var mapCenter = { lat: markers[0].latitude, lng: markers[0].longitude }
+
+  var map = new google.maps.Map(mapContainer, {
+    zoom: 10,
+    center: mapCenter
+  });
+
+  markers.forEach(function(marker){
+    var latitude = marker.latitude
+    var longitude = marker.longitude
+
+    new google.maps.Marker({
+      position: { lat: latitude, lng: longitude },
+      map: map
+    });
+  });
+});

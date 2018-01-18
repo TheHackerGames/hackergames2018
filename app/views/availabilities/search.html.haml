@@ -18,3 +18,5 @@ Search results
         %td= format_time(availability.start_datetime)
         %td= format_time(availability.end_datetime)
         %td= link_to 'Meet!', request_meeting_availability_path(availability), method: :post
+
+#map{style: 'height: 400px; width: 100%;', data: { center: { lat:params[:latitude].to_f, lng: params[:longitude].to_f }.to_json, markers: @availabilities.map(&:attributes).to_json }}
