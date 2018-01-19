@@ -1,3 +1,8 @@
+%h2.tc.merryweather
+  Great to meet you. Let's put a face on that name.
+
 = form_for @image, url: sign_up_upload_photo_path do |f|
   = f.file_field :file
-  = f.submit 'Upload'
+  = f.submit 'Upload', class: 'dn', id: 'form-submit'
+
+= render 'shared/submit_form'
