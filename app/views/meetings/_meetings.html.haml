@@ -8,7 +8,7 @@
     - meetings.each do |meeting|
       %tr
         %td
-          %img{src: meeting[:who].avatar_url, width: 80}
+          = image_tag avatar(meeting[:who].avatar_url), width: 96, height: 96, class: 'br-100'
           %br
           = meeting[:who].name
         %td= meeting[:where]

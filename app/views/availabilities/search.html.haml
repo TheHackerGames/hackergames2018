@@ -17,7 +17,7 @@ Search results
     - @availabilities.each_with_index do |availability, index|
       %tr
         %td= index
-        %td= image_tag (availability.user.avatar_url.presence || 'default-avatar.png')
+        %td= image_tag avatar(availability.user.avatar_url)
         %td= availability.user.name
         %td= availability.name
         %td= format_time(availability.start_datetime)

@@ -1,5 +1,5 @@
 .flex.items-center.justify-center.flex-column
-  %img.br-100.mt3{ src: current_user.avatar_url, width: 96, height: 96 }
+  = image_tag avatar(current_user.avatar_url), width: 96, height: 96, class: 'br-100 mt3'
 
   %h3.merryweather.mv3
     = current_user.name

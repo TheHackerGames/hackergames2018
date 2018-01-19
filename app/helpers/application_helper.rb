@@ -7,4 +7,8 @@ module ApplicationHelper
       time.to_formatted_s(format)
     end
   end
+
+  def avatar(avatar_url)
+    avatar_url.presence || 'default_avatar.png'
+  end
 end
