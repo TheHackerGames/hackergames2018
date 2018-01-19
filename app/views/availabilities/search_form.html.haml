@@ -1,11 +1,21 @@
 = form_tag search_availabilities_path, method: :get do
-  = hidden_field_tag :latitude, nil, data: { location_latitude: 1 }
-  = hidden_field_tag :longitude, nil, data: { location_longitude: 1 }
+  .fieldset.ba.b--transparent.ph0.mh0
+    = hidden_field_tag :latitude, nil, data: { location_latitude: 1 }
+    = hidden_field_tag :longitude, nil, data: { location_longitude: 1 }
 
-  Location #{text_field_tag :location, nil, data: { location_autocomplete: 1 }, class: 'pa2 input-reset ba bg-transparent w-100'}
-  %br
-  Within #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100'}
-  %br
-  Around #{text_field_tag :time, Availability.first.start_datetime + 1.minute, class: 'pa2 input-reset ba bg-transparent w-100' }
-  %br
-  = submit_tag 'Search'
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        Location
+      #{text_field_tag :location, nil, data: { location_autocomplete: 1 }, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        Within
+      #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        Around
+      #{text_field_tag :time, Availability.first.start_datetime + 1.minute, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2' }
+    .field.mt3
+      = submit_tag 'Search', class: 'dn', id: 'form-submit'
+
+= render 'shared/submit_form', locals: {text: 'Save'}
