@@ -31,6 +31,10 @@ class SignUpController < ApplicationController
     redirect_to action: :date_step
   end
 
+  def location
+
+  end
+
   def shop_step
   end
 

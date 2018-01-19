@@ -14,12 +14,23 @@
  *= require_self
  */
 
-html {
+/* html {
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+} */
+
+* {
+  font-family: "Montserrat", serif;
 }
 
+.merryweather {
+  font-family: "Merriweather", serif;
+}
+
+.shadow-2 {
+  box-shadow: 0 0 8px 2px rgba(33, 34, 36, 0.15);
+}
