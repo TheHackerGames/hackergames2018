@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def avatar(avatar_url)
-    avatar_url.presence || 'default_avatar.png'
+    avatar_url.presence || 'default-avatar.png'
   end
 end
