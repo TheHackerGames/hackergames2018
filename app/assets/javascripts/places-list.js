@@ -16,7 +16,7 @@ $(function() {
       {
         location: coordinates,
         radius: 500,
-        type: ["store"]
+        type: ["cafe"]
       },
       callback
     );
