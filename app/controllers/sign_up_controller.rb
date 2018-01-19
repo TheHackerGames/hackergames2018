@@ -68,7 +68,7 @@ class SignUpController < ApplicationController
   def upload_photo
     image = Image.create(file: params.dig(:image, :file))
     if image.persisted? && current_user.update(image: image)
-      redirect_to action: :coffeeshop_step
+      redirect_to action: :location_step
     else
       logger.warn "  Image errors: #{image.errors.full_messages}"
       logger.warn "  User errors: #{current_user.errors.full_messages}"
