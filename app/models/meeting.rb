@@ -11,7 +11,13 @@ class Meeting < ApplicationRecord
   def present_for(current_user)
     hash = {
       id: id,
-      where: availability.name,
+      where: {
+        name: availability.name,
+        location: {
+          latitude: availability.latitude,
+          longitude: availability.longitude
+        }
+      },
       when: availability.start_datetime
     }
 

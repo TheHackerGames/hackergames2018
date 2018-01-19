@@ -1,9 +1,14 @@
 .flex.items-center.justify-center.flex-column
-  = image_tag @meeting.availability.user.avatar_url, width: 96, height: 96, class: 'br-100'
+  = image_tag @meeting[:who].avatar_url, width: 96, height: 96, class: 'br-100'
 
   %h3.merryweather.mv3
-    #{@meeting.availability.user.name}
+    #{@meeting[:who].name}
 
-  #{@meeting.availability.name}
+  #{@meeting[:where][:name]}
 
-  #{format_time(@meeting.availability.start_datetime, format: '%H:%M')}
+  %p
+    %strong #{format_time(@meeting[:when], format: '%A %d/%m')}
+    around
+    %strong #{format_time(@meeting[:when], format: '%H:%M')}
+
+= render partial: 'shared/map', locals: @meeting[:where][:location]

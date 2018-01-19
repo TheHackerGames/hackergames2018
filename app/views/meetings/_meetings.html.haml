@@ -11,6 +11,6 @@
           = image_tag avatar(meeting[:who].avatar_url), width: 96, height: 96, class: 'br-100'
           %br
           = meeting[:who].name
-        %td= meeting[:where]
-        %td= format_time(meeting[:when])
+        %td= meeting[:where][:name]
+        %td= format_time(meeting[:when], format: '%A %d/%m %H:%M')
         %td= link_to 'Go', meeting_path(meeting[:id])
