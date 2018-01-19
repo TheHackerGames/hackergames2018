@@ -1,16 +1,26 @@
 = form_for availability do |f|
-  = f.hidden_field :name, data: { location_name: 1 }
-  = f.hidden_field :address, data: { location_address: 1 }
-  = f.hidden_field :latitude, data: { location_latitude: 1 }
-  = f.hidden_field :longitude, data: { location_longitude: 1 }
-  = f.hidden_field :gmaps_place_id, data: { location_gmaps_place_id: 1 }
+  .fieldset.ba.b--transparent.ph0.mh0
+    = f.hidden_field :name, data: { location_name: 1 }
+    = f.hidden_field :address, data: { location_address: 1 }
+    = f.hidden_field :latitude, data: { location_latitude: 1 }
+    = f.hidden_field :longitude, data: { location_longitude: 1 }
+    = f.hidden_field :gmaps_place_id, data: { location_gmaps_place_id: 1 }
 
-  Where do you want to have coffee?
-  %br
-  = text_field_tag :location, '', data: { location_autocomplete: 1, location_type: 'establishment' }
-  %br
-  Start datetime: #{f.text_field :start_datetime}
-  %br
-  End datetime: #{f.text_field :end_datetime}
-  %br
-  = f.submit 'Save'
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        Where do you want to have coffee?
+      = text_field_tag :location, '', data: { location_autocomplete: 1, location_type: 'establishment' }, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'
+
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        Start:
+      #{f.text_field :start_datetime, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
+
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        End:
+      #{f.text_field :end_datetime, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
+
+      = f.submit 'Save', class: 'dn', id: 'form-submit'
+
+= render 'shared/submit_form'
