@@ -18,13 +18,13 @@ Rails.application.routes.draw do
     get :meet_type_step
     get :name_step
     get :email_step
-    get :location_step
-    get :coffeeshop_step
+    post :sign_up
     get :photo_step
     post :upload_photo
-    get :shop_step
+    get :coffeeshop_step
     get :date_step
     get :time_step
+    post :create_availability
     get :final_step
   end
 end

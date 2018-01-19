@@ -1,7 +1,7 @@
 %h2.tc.merryweather
   Let's get started
 
-%form{action: sign_up_final_step_path, method: :get}
+= form_for :availability, url: sign_up_create_availability_path do
   .fieldset.ba.b--transparent.ph0.mh0
     %p Same time for all dates
 
