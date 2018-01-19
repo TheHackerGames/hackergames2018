@@ -23,8 +23,6 @@ $(function() {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       $results = results;
       for (var i = 0; i < results.length; i++) {
-        console.log(results[i]);
-
         $placesList.append(
           "<li class='mb3'><a class='shadow-3 db br2 pa3 no-underline black' href='javascript:;' data-place-id='" +
             i +

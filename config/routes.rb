@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :meetings, only: %i[index show]
 
   scope controller: :sign_up, path: 'sign_up', as: 'sign_up' do
+    get :location_step
     get :type_step
     get :meet_type_step
     get :name_step

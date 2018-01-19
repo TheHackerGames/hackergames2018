@@ -1,5 +1,5 @@
 %h2.tc.merryweather.lh-copy
-  Brixton is 👌
+  #{current_state[:location_name]} is 👌
   %br
   What's your favourite coffee shop?
 
@@ -9,7 +9,7 @@
       %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
         Location
 
-      %ul.list.ph0{data: {places_list: true, lat: 51.515419, lng: -0.141099}}
+      %ul.list.ph0{data: {places_list: true, lat: current_state[:location_latitude], lng: current_state[:location_longitude]}}
 
       %input{type: 'hidden', name: 'name', data: { location_name: 1 }}
       %input{type: 'hidden', name: 'address', data: { location_address: 1 }}

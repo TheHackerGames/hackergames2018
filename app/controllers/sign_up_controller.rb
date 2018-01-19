@@ -77,7 +77,16 @@ class SignUpController < ApplicationController
     end
   end
 
+  def location_step; end
+
   def coffeeshop_step
+    merge_state(
+      location_name: params[:name],
+      location_address: params[:address],
+      location_latitude: params[:latitude].to_f,
+      location_longitude: params[:longitude].to_f,
+      location_gmaps_place_id: params[:gmaps_place_id]
+    )
   end
 
   def date_step
@@ -111,7 +120,7 @@ class SignUpController < ApplicationController
 
   def create_availability
     start_datetime = DateTime.parse "#{current_state[:date]} #{params[:start_time]}"
-    end_datetime = DateTime.parse "#{current_state[:date]} #{params[:start_time]}"
+    end_datetime = DateTime.parse "#{current_state[:date]} #{params[:end_time]}"
 
     @availability = Availability.create!(
       user: current_user,
