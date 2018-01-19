@@ -34,7 +34,7 @@ $(function initMap() {
   var mapCenter = JSON.parse(mapData.center)
 
   var map = new google.maps.Map(mapContainer, {
-    zoom: 10,
+    zoom: 16,
     center: mapCenter
   });
 

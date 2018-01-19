@@ -1,7 +1,7 @@
 Search results
 
 %br
-#map{style: 'height: 400px; width: 100%;', data: { center: { lat: @latitude, lng: @longitude }.to_json, markers: @availabilities_json.to_json }}
+= render partial: 'shared/map', locals: { latitude: @latitude, longitude: @longitude, markers: @availabilities_json }
 
 %table
   %thead
