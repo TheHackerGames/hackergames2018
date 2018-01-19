@@ -17,15 +17,14 @@ class SignUpController < ApplicationController
       flash[:alert] = 'Missing user type'
       return redirect_to action: :type_step
     end
+
+    if current_state[:user_type] == 'civilian'
+      redirect_to action: :name_step
+    end
   end
 
   def name_step
     merge_state(meet_user_type: params[:meet_user_type]) if params.include? :meet_user_type
-
-    unless current_state.include? :meet_user_type
-      flash[:alert] = 'Missing meet user type'
-      return redirect_to action: :meet_type_step
-    end
   end
 
   def email_step
