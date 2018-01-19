@@ -159,7 +159,7 @@ class SignUpController < ApplicationController
   end
 
   def skip_sign_up_steps
-    redirect_to action: :coffeeshop_step
+    redirect_to action: :location_step
   end
 
   def start_from_beginning
