@@ -34,6 +34,9 @@ class SignUpController < ApplicationController
   def location_step
   end
 
+  def coffeeshop_step
+  end
+
   def shop_step
   end
 
