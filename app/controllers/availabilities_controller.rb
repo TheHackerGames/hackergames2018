@@ -27,12 +27,13 @@ class AvailabilitiesController < ApplicationController
   def search_form; end
 
   def search
+    @date = search_params[:date]
     @time = search_params[:time]
     @latitude = search_params[:latitude].to_f
     @longitude = search_params[:longitude].to_f
     @within = search_params[:within].to_f
 
-    @availabilities = Availability.where('? BETWEEN start_datetime AND end_datetime', @time)
+    @availabilities = Availability.where("? BETWEEN (start_datetime - interval '1h') AND (end_datetime + interval '1h')", DateTime.parse("#{@date} #{@time}"))
                                   .near([@latitude, @longitude], @within)
 
     @availabilities_json = @availabilities.map.with_index { |a, i| a.attributes.merge('label' => i.to_s) }

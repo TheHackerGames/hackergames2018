@@ -13,8 +13,12 @@
       #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
     .field.mt3
       %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+        When
+      %input#date.pa2.input-reset.ba.bg-transparent.w-100.b--moon-gray.br2{name: "date", type: "date", required: true, value: Date.today}
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
         Around
-      #{text_field_tag :time, Availability.first.start_datetime + 1.minute, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2' }
+      = select_tag(:time, options_for_select((0..23).to_a, Time.now.strftime("%H")), class: 'pa2 ba bg-transparent w-100 b--moon-gray br2')
     .field.mt3
       = submit_tag 'Search', class: 'dn', id: 'form-submit'
 
