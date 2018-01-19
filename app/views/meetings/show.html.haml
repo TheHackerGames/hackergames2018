@@ -10,7 +10,7 @@
 
   %p
     %strong #{format_time(@meeting[:when], format: '%A %d/%m')}
-    around
+    at
     %strong #{format_time(@meeting[:when], format: '%H:%M')}
 
 = render partial: 'shared/map', locals: @meeting[:where][:location]
