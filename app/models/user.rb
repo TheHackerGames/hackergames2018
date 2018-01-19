@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def meetings
     (Meeting.joins(:availability).where(availabilities: { user_id: id }) + Meeting.where(user_id: id)).flatten
   end
+
+  def avatar_url
+    @avatar_url || image&.file&.url
+  end
 end
