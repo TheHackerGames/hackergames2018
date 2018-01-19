@@ -168,8 +168,8 @@ PusherChatWidget._createHTML = function(appendTo) {
 
   var html = '' +
   '<div class="pusher-chat-widget">' +
-    '<input type="hidden" name="nickname" value="'+nickname+'">' +
-    '<input type="hidden" name="email" value="${email}">' +
+    '<input type="hidden" name="nickname" value="' + nickname + '">' +
+    '<input type="hidden" name="email" value="' + email + '">' +
     '<div class="pusher-chat-widget-header">' +
       '<div class="pusher-chat-widget-current-user-image">' +
         '<img src="' + avatar + '" width="32" height="32" />' +
