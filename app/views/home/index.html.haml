@@ -15,5 +15,9 @@
     Get started
 
 .tc.mt4
-  %a.fw6.no-underline.black{href: '/users/sign_in'}
-    Sign in
+  - if signed_in?
+    %a.fw6.no-underline.black{href: '/users/sign_out'}
+      Sign out
+  - else
+    %a.fw6.no-underline.black{href: '/users/sign_in'}
+      Sign in
