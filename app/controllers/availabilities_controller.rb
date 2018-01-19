@@ -42,6 +42,9 @@ class AvailabilitiesController < ApplicationController
 
   def request_meeting
     meeting = Meeting.create!(user: current_user, availability: @availability)
+    # CHATKIT.create_user(current_user.id.to_s, current_user.name)
+    # CHATKIT.create_user(@availability.user.id.to_s, @availability.user.name)
+    # CHATKIT.create_room(current_user.id.to_s, "meeting:#{meeting.id}", [@availability.user.id.to_s])
     redirect_to meeting_path(meeting), notice: 'Request sent'
   end
 
