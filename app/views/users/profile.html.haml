@@ -1,19 +1,13 @@
-Your profile
-%br
+.flex.items-center.justify-center.flex-column
+  %img.br-100.mt3{ src: current_user.avatar_url, width: 96, height: 96 }
 
-%img{ src: current_user.avatar_url, width: 128, height: 128 }
-%br
+  %h3.merryweather.mv3
+    = current_user.name
 
-= form_for current_user do |f|
-  Name: #{f.text_field :name}
-  %br
-  Avatar: #{f.text_field :avatar_url}
-  %br
-  = f.submit 'Save'
-
-
-= link_to 'See your scheduled meetings', meetings_path
-%br
-= link_to 'See when you are available', availabilities_path
-%br
-= link_to 'Search for available people', search_form_availabilities_path
+  %ul.list.ph0
+    %li.db.tc
+      = link_to 'View your schedule', meetings_path, class: 'db ba no-underline br-pill black ttu tracked ph4 pv2 w-100 mb3 fw6 f6'
+    %li.db.tc
+      = link_to 'Change availability', availabilities_path, class: 'db ba no-underline br-pill black ttu tracked ph4 pv2 w-100 mb3 fw6 f6'
+    %li.db.tc
+      = link_to 'Search for people', search_form_availabilities_path, class: 'db ba no-underline br-pill black ttu tracked ph4 pv2 w-100 mb3 fw6 f6'
