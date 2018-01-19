@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
 
   def show
     meeting = Meeting.find(params[:id])
-    return :not_found unless meeting.user_id == current_user.id || meeting.availability.user_id == current_user.id
+    head :not_found unless meeting.user_id == current_user.id || meeting.availability.user_id == current_user.id
 
     @meeting = meeting.present_for(current_user)
   end
