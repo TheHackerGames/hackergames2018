@@ -1,5 +1,5 @@
 .flex.items-center.justify-center.flex-column
-  = image_tag @meeting[:who].avatar_url, width: 96, height: 96, class: 'br-100'
+  = image_tag avatar(@meeting[:who].avatar_url), width: 96, height: 96, class: 'br-100'
 
   %h3.merryweather.mv3
     #{@meeting[:who].name}
