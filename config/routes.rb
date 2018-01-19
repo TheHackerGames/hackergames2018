@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get :meet_type_step
     get :name_step
     get :email_step
+    get :location_step
     get :photo_step
     post :upload_photo
     get :shop_step

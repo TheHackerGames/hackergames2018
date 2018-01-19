@@ -1,0 +1,19 @@
+%h2.tc.merryweather
+  What part of town do you like to drink your coffee in?
+
+%form{action: sign_up_photo_step_path, method: :get}
+  .fieldset.ba.b--transparent.ph0.mh0
+    .field.mt3
+      %label.db.fw6.lh-copy.f6.mb2
+        Location
+      %input.pa2.input-reset.ba.bg-transparent.w-100{name: "location", type: "text", data: {location_autocomplete: true}}
+
+      %input{type: 'hidden', name: 'name', data: { location_name: 1 }}
+      %input{type: 'hidden', name: 'address', data: { location_address: 1 }}
+      %input{type: 'hidden', name: 'latitude', data: { location_latitude: 1 }}
+      %input{type: 'hidden', name: 'longitude', data: { location_longitude: 1 }}
+      %input{type: 'hidden', name: 'gmaps_place_id', data: { location_gmaps_place_id: 1 }}
+
+  %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
+
+= render 'shared/submit_form'
