@@ -5,7 +5,7 @@
   - @availabilities.each_with_index do |availability, index|
     %li.bt.pa3.b--moon-gray.flex
       .search-result__img.flex.mh2.items-center
-        = image_tag availability.user.avatar_url, width: 40, height: 40, class: 'br-100'
+        = image_tag avatar(availability.user.avatar_url), width: 40, height: 40, class: 'br-100'
       .search-result__info
         %h4.merryweather.mt0.mb2
           = availability.user.name
