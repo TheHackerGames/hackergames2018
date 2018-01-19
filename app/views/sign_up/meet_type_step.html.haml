@@ -5,15 +5,17 @@
   .fieldset.ba.b--transparent.ph0.mh0
     .field.mt3
       .flex.ttu
-        %input#meet-user-type-hero.dn.user-type-switch{name: "meet_user_type", value: "hero", type: "radio"}
+        %input#meet-user-type-hero.dn.user-type-switch{name: "meet_user_type", value: "hero", type: "radio", required: true}
         %label.ba.b--moon-gray.w-50.pv5.ph2.mr3.tc.flex.justify-center.items-center.pointer.tracked.br2{:for => "meet-user-type-hero"}
-          Other veterans
-        %input#meet-user-type-civilian.dn.user-type-switch{name: "meet_user_type", value: "civilian", type: "radio"}
+          - if current_state[:user_type] == 'hero'
+            Other
+          veterans
+        %input#meet-user-type-civilian.dn.user-type-switch{name: "meet_user_type", value: "civilian", type: "radio", required: true}
         %label.ba.b--moon-gray.w-50.pv5.ph2.tc.flex.justify-center.items-center.pointer.tracked.br2{:for => "meet-user-type-civilian"}
           Non-military
 
     .field.mt3
-      %input#meet-user-type-dont-mind.mt3{name: "meet_user_type", value: "dont-mind", type: "radio"}
+      %input#meet-user-type-dont-mind.mt3{name: "meet_user_type", value: "dont-mind", type: "radio", required: true}
       %label.ttu.pl1.tracked{for: 'meet-user-type-dont-mind'} I don't mind
 
   %input.dn{type: 'submit', value: "Continue", id: 'form-submit'}
