@@ -1,21 +1,9 @@
-- if @meeting.user_type(current_user) == :offering
-  You're going for a coffee at
-  %strong
-    #{@meeting.availability.name}
-  and you're meeting
-  %strong
-    #{@meeting.user.name}
-  around
-  %strong #{format_time(@meeting.availability.start_datetime, format: '%H:%M')}
-- else
-  %strong
+.flex.items-center.justify-center.flex-column
+  = image_tag @meeting.availability.user.avatar_url, width: 96, height: 96, class: 'br-100'
+
+  %h3.merryweather.mv3
     #{@meeting.availability.user.name}
-  is going for a coffee at
-  %strong
-    #{@meeting.availability.name}
-  and you're meeting them around
-  %strong #{format_time(@meeting.availability.start_datetime, format: '%H:%M')}
 
+  #{@meeting.availability.name}
 
-
-= render partial: 'shared/map', locals: { latitude: @meeting.availability.latitude, longitude: @meeting.availability.longitude }
+  #{format_time(@meeting.availability.start_datetime, format: '%H:%M')}
