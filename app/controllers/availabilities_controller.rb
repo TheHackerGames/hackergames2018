@@ -31,11 +31,13 @@ class AvailabilitiesController < ApplicationController
     @time = search_params[:time]
     @latitude = search_params[:latitude].to_f
     @longitude = search_params[:longitude].to_f
-    @within = search_params[:within].to_f
+    # @within = search_params[:within].to_f
+    @within = 15
 
     # @availabilities = Availability.where("? BETWEEN (start_datetime - interval '1h') AND (end_datetime + interval '1h')", DateTime.parse("#{@date} #{@time}"))
-    @availabilities = Availability.where("date_trunc('day', start_datetime) = ?", DateTime.parse("#{@date} #{@time}"))
+    @availabilities = Availability.where("start_datetime >= ?", Time.zone.now.beginning_of_day)
                                   .near([@latitude, @longitude], @within)
+                                  .limit(10)
 
     @availabilities_json = @availabilities.map.with_index { |a, i| a.attributes.merge('label' => i.to_s) }
   end

@@ -1,3 +1,6 @@
+%h2.tc.merryweather.lh-copy
+  What part of town do you like to drink coffee in?
+
 = form_tag search_availabilities_path, method: :get do
   .fieldset.ba.b--transparent.ph0.mh0
     = hidden_field_tag :latitude, nil, data: { location_latitude: 1 }
@@ -7,14 +10,14 @@
       %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
         Location
       #{text_field_tag :location, nil, data: { location_autocomplete: 1 }, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
-    .field.mt3
-      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
-        Within
-      #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
-    .field.mt3
-      %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
-        When
-      %input#date.pa2.input-reset.ba.bg-transparent.w-100.b--moon-gray.br2{name: "date", type: "date", required: true, value: Date.today}
+    -# .field.mt3
+    -#   %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+    -#     Within
+    -#   #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100 b--moon-gray br2'}
+    -# .field.mt3
+    -#   %label.db.fw6.lh-copy.f6.mb2.ttu.tracked
+    -#     When
+    -#   %input#date.pa2.input-reset.ba.bg-transparent.w-100.b--moon-gray.br2{name: "date", type: "date", required: true, value: Date.today}
     -# .field.mt3
     -#   = select_tag(:time, options_for_select((0..23).to_a, Time.now.strftime("%H")), class: 'pa2 ba bg-transparent w-100 b--moon-gray br2')
     .field.mt3
