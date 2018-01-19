@@ -26,11 +26,11 @@ $(function() {
         console.log(results[i]);
 
         $placesList.append(
-          "<li class='mb3'><a href='javascript:;' data-place-id='" +
+          "<li class='mb3'><a class='shadow-3 db br2 pa3 no-underline black' href='javascript:;' data-place-id='" +
             i +
-            "'><div>" +
+            "'><div class='ttu fw6 tracked mb2'>" +
             results[i].name +
-            "</div><div>" +
+            "</div><div class='gray'>" +
             results[i].vicinity +
             "</div></a></li>"
         );
