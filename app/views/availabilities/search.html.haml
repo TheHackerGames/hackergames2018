@@ -1,6 +1,8 @@
 Search results
 
 %br
+#map{style: 'height: 400px; width: 100%;', data: { center: { lat: @latitude, lng: @longitude }.to_json, markers: @availabilities_json.to_json }}
+
 %table
   %thead
     %th
@@ -22,5 +24,3 @@ Search results
         %td= format_time(availability.end_datetime)
         %td #{availability.distance.round(2)} mi
         %td= link_to 'Meet!', request_meeting_availability_path(availability), method: :post
-
-#map{style: 'height: 400px; width: 100%;', data: { center: { lat: @latitude, lng: @longitude }.to_json, markers: @availabilities_json.to_json }}

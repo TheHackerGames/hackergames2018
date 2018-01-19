@@ -14,7 +14,7 @@ $(function() {
 
   var autocomplete;
   var input = $locationAutocompleteInput.get()[0];
-  var locationType = input.dataset.locationType || "(regions)"
+  var locationType = input.dataset.locationType || "address"
   var options = {
     componentRestrictions: { country: "uk" },
     types: [locationType]
@@ -38,23 +38,25 @@ $(function initMap() {
     center: mapCenter
   });
 
-  var latlngList = [];
-
-  markers.forEach(function(marker){
-    var markerLocation = { lat: marker.latitude, lng: marker.longitude }
-    latlngList.push(new google.maps.LatLng (marker.latitude, marker.longitude));
-
-    new google.maps.Marker({ position: markerLocation, map: map, label: marker.label });
-  });
-
   new google.maps.Marker({ position: mapCenter, map: map, icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png" });
-  latlngList.push(new google.maps.LatLng (mapCenter.lat, mapCenter.lng));
 
-  var bounds = new google.maps.LatLngBounds();
-  latlngList.forEach(function(n){
-     bounds.extend(n);
-  });
-  map.setCenter(bounds.getCenter()); //or use custom center
-  map.fitBounds(bounds);
+  if(markers.length > 0) {
+    var latlngList = [];
 
+    markers.forEach(function(marker){
+      var markerLocation = { lat: marker.latitude, lng: marker.longitude }
+      latlngList.push(new google.maps.LatLng (marker.latitude, marker.longitude));
+
+      new google.maps.Marker({ position: markerLocation, map: map, label: marker.label });
+    });
+
+    latlngList.push(new google.maps.LatLng (mapCenter.lat, mapCenter.lng));
+
+    var bounds = new google.maps.LatLngBounds();
+    latlngList.forEach(function(n){
+       bounds.extend(n);
+    });
+    map.setCenter(bounds.getCenter()); //or use custom center
+    map.fitBounds(bounds);
+  }
 });

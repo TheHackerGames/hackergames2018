@@ -2,10 +2,10 @@
   = hidden_field_tag :latitude, nil, data: { location_latitude: 1 }
   = hidden_field_tag :longitude, nil, data: { location_longitude: 1 }
 
-  Location #{text_field_tag :location, nil, data: { location_autocomplete: 1 }}
+  Location #{text_field_tag :location, nil, data: { location_autocomplete: 1 }, class: 'pa2 input-reset ba bg-transparent w-100'}
   %br
-  Within #{text_field_tag :within}
+  Within #{text_field_tag :within, nil, class: 'pa2 input-reset ba bg-transparent w-100'}
   %br
-  Around #{text_field_tag :time, Availability.first.start_datetime + 1.minute }
+  Around #{text_field_tag :time, Availability.first.start_datetime + 1.minute, class: 'pa2 input-reset ba bg-transparent w-100' }
   %br
   = submit_tag 'Search'
