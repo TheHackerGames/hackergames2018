@@ -5,6 +5,8 @@
     #{@meeting[:who].name}
 
   #{@meeting[:where][:name]}
+  %br
+  #{@meeting[:where][:address]}
 
   %p
     %strong #{format_time(@meeting[:when], format: '%A %d/%m')}

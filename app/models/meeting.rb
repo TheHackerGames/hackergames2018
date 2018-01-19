@@ -13,6 +13,7 @@ class Meeting < ApplicationRecord
       id: id,
       where: {
         name: availability.name,
+        address: availability.address,
         location: {
           latitude: availability.latitude,
           longitude: availability.longitude
