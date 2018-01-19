@@ -1,5 +1,5 @@
 %h2.tc.merryweather.lh-copy
-  Great to meet you. Let's put a face to that name.
+  Great to meet you, #{@name}. Let's put a face to that name.
 
 = form_for @image, url: sign_up_upload_photo_path do |f|
   = f.file_field :file, required: true

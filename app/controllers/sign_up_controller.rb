@@ -61,6 +61,7 @@ class SignUpController < ApplicationController
   end
 
   def photo_step
+    @name = current_state[:first_name]
     @image = Image.new
   end
 
