@@ -11,10 +11,6 @@ class User < ApplicationRecord
   end
 
   def meetings
-    if offering_help?
-      Meeting.joins(:availability).where(availabilities: { user_id: id })
-    else
-      Meeting.where(user_id: id)
-    end
+    (Meeting.joins(:availability).where(availabilities: { user_id: id }) + Meeting.where(user_id: id)).flatten
   end
 end

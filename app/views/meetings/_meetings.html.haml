@@ -6,12 +6,11 @@
     %th
   %tbody
     - meetings.each do |meeting|
-      - user = meeting.availability.user
       %tr
         %td
-          %img{src: user.avatar_url}
+          %img{src: meeting[:who].avatar_url, width: 80}
           %br
-          = user.name
-        %td= meeting.availability.name
-        %td= format_time(meeting.created_at)
-        %td= link_to 'Go', meeting_path(meeting)
+          = meeting[:who].name
+        %td= meeting[:where]
+        %td= format_time(meeting[:when])
+        %td= link_to 'Go', meeting_path(meeting[:id])

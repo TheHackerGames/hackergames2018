@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @meetings = current_user.meetings
+    @meetings = current_user.meetings.map{|m| m.present_for(current_user)}
   end
 
   def show
