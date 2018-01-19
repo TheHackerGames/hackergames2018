@@ -32,21 +32,19 @@ class AvailabilitiesController < ApplicationController
     @latitude = search_params[:latitude].to_f
     @longitude = search_params[:longitude].to_f
     # @within = search_params[:within].to_f
-    @within = 15
+    @within = 3
 
     # @availabilities = Availability.where("? BETWEEN (start_datetime - interval '1h') AND (end_datetime + interval '1h')", DateTime.parse("#{@date} #{@time}"))
     @availabilities = Availability.where("start_datetime >= ?", Time.zone.now.beginning_of_day)
                                   .near([@latitude, @longitude], @within)
-                                  .limit(10)
+                                  .order(id: :desc)
+                                  .limit(5)
 
     @availabilities_json = @availabilities.map.with_index { |a, i| a.attributes.merge('label' => i.to_s) }
   end
 
   def request_meeting
     meeting = Meeting.create!(user: current_user, availability: @availability)
-    # CHATKIT.create_user(current_user.id.to_s, current_user.name)
-    # CHATKIT.create_user(@availability.user.id.to_s, @availability.user.name)
-    # CHATKIT.create_room(current_user.id.to_s, "meeting:#{meeting.id}", [@availability.user.id.to_s])
     redirect_to meeting_path(meeting), notice: 'Request sent'
   end
 

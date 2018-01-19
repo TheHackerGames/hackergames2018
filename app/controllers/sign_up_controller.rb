@@ -122,11 +122,11 @@ class SignUpController < ApplicationController
   end
 
   def create_availability
-    if params.include? :start_datetime
+    if params.include? :start_time
       merge_state(start_datetime: DateTime.parse("#{current_state[:date]} #{params[:start_time]}"))
     end
 
-    if params.include? :end_datetime
+    if params.include? :end_time
       merge_state(end_datetime: DateTime.parse("#{current_state[:date]} #{params[:end_time]}"))
     end
 
