@@ -19,3 +19,13 @@
 
 
 = render partial: 'shared/map', locals: { latitude: @meeting.availability.latitude, longitude: @meeting.availability.longitude }
+
+
+:javascript
+  console.log('Test')
+
+  chatManager = new Chatkit.ChatManager({
+    instanceLocator: "v1:us1:7c755ba5-78ac-49c2-96e6-a2b1c08e723c",
+    userId: current_user,
+    tokenProvider: tokenProvider
+  });
