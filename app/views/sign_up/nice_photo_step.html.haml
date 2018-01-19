@@ -1,0 +1,14 @@
+- if current_state[:user_type] == 'civilian'
+  = form_for @image, url: sign_up_location_step_path, method: :get do |f|
+    = f.submit 'Upload', class: 'dn', id: 'form-submit'
+- else
+  = form_for @image, url: sign_up_email_step_path, method: :get do |f|
+    = f.submit 'Upload', class: 'dn', id: 'form-submit'
+
+.flex.items-center.justify-center.flex-column
+  = image_tag avatar(@image.file.url), width: 96, height: 96, class: 'br-100 mt3'
+
+%h2.tc.merryweather.lh-copy
+  Nice photo! 👍
+
+= render 'shared/submit_form'

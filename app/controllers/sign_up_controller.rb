@@ -26,6 +26,9 @@ class SignUpController < ApplicationController
   end
 
   def photo_step
+    merge_state(first_name: params[:first_name]) if params.include? :first_name
+    merge_state(last_name: params[:last_name]) if params.include? :last_name
+
     @name = current_state[:first_name]
     @image = Image.new
   end
@@ -34,16 +37,16 @@ class SignUpController < ApplicationController
     image = Image.create(file: params.dig(:image, :file))
     if image.persisted?
       merge_state(image_id: image.id)
-      if current_state[:user_type] == 'civilian'
-        redirect_to action: :location_step
-      else
-        redirect_to action: :email_step
-      end
+      redirect_to action: :nice_photo_step
     else
       logger.warn "  Image errors: #{image.errors.full_messages}"
       flash[:alert] = 'Invalid file'
       redirect_to action: :photo_step
     end
+  end
+
+  def nice_photo_step
+    @image = Image.find(current_state[:image_id])
   end
 
   def location_step; end

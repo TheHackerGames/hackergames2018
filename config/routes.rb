@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     post :sign_up
     get :photo_step
     post :upload_photo
+    get :nice_photo_step
     get :coffeeshop_step
     get :date_step
     get :time_step
