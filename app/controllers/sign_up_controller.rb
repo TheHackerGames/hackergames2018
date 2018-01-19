@@ -26,9 +26,13 @@ class SignUpController < ApplicationController
   end
 
   def upload_photo
-    image = Image.create!(file: params[:image][:file])
-    merge_state(image_id: image.id)
-    redirect_to action: :date_step
+    @image = Image.create(file: params.dig(:image, :file))
+    if @image.persisted?
+      merge_state(image_id: @image.id)
+      redirect_to action: :date_step
+    else
+      render :photo_step
+    end
   end
 
   def location_step
