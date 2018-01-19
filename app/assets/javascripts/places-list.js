@@ -24,7 +24,7 @@ $(function() {
       $results = results;
       for (var i = 0; i < results.length; i++) {
         $placesList.append(
-          "<li class='mb3'><a class='shadow-3 db br2 pa3 no-underline black' href='javascript:;' data-place-id='" +
+          "<li class='mb3'><a class='ba b--black-025 shadow-3 db br2 pa3 no-underline black' href='javascript:;' data-place-id='" +
             i +
             "'><div class='ttu fw6 tracked mb2'>" +
             results[i].name +
@@ -43,6 +43,12 @@ $(function() {
   getPlaces();
 
   $(document).on("click", "[data-place-id]", function() {
+    $(".b--black")
+      .removeClass("b--black")
+      .addClass("b--black-025");
+    $(this)
+      .removeClass("b--black-025")
+      .addClass("b--black");
     var placeId = $(this).data("place-id");
 
     $("[data-location-name]").val($results[placeId]["name"]);
