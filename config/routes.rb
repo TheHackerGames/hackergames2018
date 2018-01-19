@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
     post :request_meeting, on: :member
   end
-  resources :meetings, only: %i[index]
+  resources :meetings, only: %i[index show]
 
   scope controller: :sign_up, path: 'sign_up', as: 'sign_up' do
     get :type_step

@@ -3,6 +3,7 @@
     %th Who
     %th Where
     %th When
+    %th
   %tbody
     - meetings.each do |meeting|
       - user = meeting.availability.user
@@ -13,3 +14,4 @@
           = user.name
         %td= meeting.availability.name
         %td= format_time(meeting.created_at)
+        %td= link_to 'Go', meeting_path(meeting)

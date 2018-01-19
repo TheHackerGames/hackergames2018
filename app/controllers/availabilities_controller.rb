@@ -39,8 +39,8 @@ class AvailabilitiesController < ApplicationController
   end
 
   def request_meeting
-    Meeting.create!(user: current_user, availability: @availability)
-    redirect_to meetings_path, notice: 'Request sent'
+    meeting = Meeting.create!(user: current_user, availability: @availability)
+    redirect_to meeting_path(meeting), notice: 'Request sent'
   end
 
   private

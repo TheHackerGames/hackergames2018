@@ -23,4 +23,4 @@ Search results
         %td= format_time(availability.start_datetime)
         %td= format_time(availability.end_datetime)
         %td #{availability.distance.round(2)} mi
-        %td= link_to 'Meet!', request_meeting_availability_path(availability), method: :post
+        %td= button_to 'Meet!', request_meeting_availability_path(availability), method: :post
