@@ -48,3 +48,20 @@ html {
   height: 40px;
   width: 40px;
 }
+
+.search-results {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.search-result__img {
+  flex-shrink: 0;
+}
+
+.search-result__info {
+  flex-grow: 1;
+}
+
+.search-result__cta svg {
+  transform: scaleX(-1);
+}

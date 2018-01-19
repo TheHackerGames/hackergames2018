@@ -2,8 +2,7 @@
   .mw6.ph3.ph5-ns.w-100.relative.flex.items-center.justify-center
     - if controller.controller_name == 'sign_up' || controller.controller_name == 'users'
       %a.absolute.left-1.ml5-ns{href: 'javascript:;', onclick: "window.history.go(-1); return false;"}
-        %svg.flex.justify-center.items-center{:version => "1.1", :viewbox => "0 0 24 24", height: '24px', width: '24px', stroke: 'grey', 'stroke-width': '2px', fill: 'none'}
-          %path{:d => "M17 2L7 12l10 10", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-miterlimit" => "10", "vector-effect" => "non-scaling-stroke"}
+        = render 'shared/icons/caret'
     - else
       - if user_signed_in?
         .absolute.left-1.ml5-ns.flex.items-center
@@ -14,4 +13,4 @@
       - if current_page?(root_path)
         Local hero
       - else
-        = render 'shared/logo'
+        = render 'shared/icons/logo'
