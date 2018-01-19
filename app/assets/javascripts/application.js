@@ -11,3 +11,20 @@
 // about supported directives.
 //
 //= require_tree .
+
+
+$(function() {
+  var pusher = new Pusher('57fe66c88fb8a9542508', {
+      cluster: 'eu',
+      encrypted: true
+    });
+
+  var channel = $('#chat').data().channel
+
+  if (channel == null) return;
+
+  var chatWidget = new PusherChatWidget(pusher, {
+    chatEndPoint: '/chat/handle',
+    channelName: channel
+  });
+});

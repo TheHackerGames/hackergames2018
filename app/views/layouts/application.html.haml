@@ -1,14 +1,18 @@
 !!!
 %html.no-js{lang: 'en'}
   %head
+    = stylesheet_link_tag    '//js.pusher.com/3.0/pusher.min.js'
     = stylesheet_link_tag    '//fonts.googleapis.com/css?family=Merriweather', media: 'all'
     = stylesheet_link_tag    'proxima-nova', media: 'all'
     = stylesheet_link_tag    '//unpkg.com/tachyons@4.9.0/css/tachyons.min.css', media: 'all'
     = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'pusher-chat-widget', media: 'all'
     = javascript_include_tag '//maps.googleapis.com/maps/api/js?key=AIzaSyBcaaM-TzM9DUuqCqV4khAFuI6S_C3YDWs&libraries=places'
     = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'
     = javascript_include_tag '//unpkg.com/pusher-chatkit-client'
+    = javascript_include_tag '//js.pusher.com/3.0/pusher.min.js'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'PusherChatWidget'
 
     = csrf_meta_tag
     %meta{name:"viewport", content: "width=device-width, initial-scale=1"}

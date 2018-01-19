@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
 
+  get '/chat/index', controller: :chat, action: :index
+  post '/chat/handle', controller: :chat, action: :handle
+
   resources :users, only: %i[update]
   resources :availabilities, only: %i[index new edit create update] do
     get :search_form, on: :collection
