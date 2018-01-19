@@ -1,18 +1,21 @@
-Your Availabilities
+%h2.tc.merryweather.lh-copy
+  Your Availabilities
 
-%br
-%table
+%table.pt4
   %thead
-    %th Where
-    %th From
-    %th To
-    %th Actions
+    %th.tl.fw6.bb.b--moon-gray.pb2 Where
+    %th.tl.fw6.bb.b--moon-gray.pb2 From
+    %th.tl.fw6.bb.b--moon-gray.pb2 To
+    %th.tl.fw6.bb.b--moon-gray.pb2 Actions
   %tbody
     - @availabilities.each do |availability|
       %tr
-        %td= availability.name
-        %td= format_time(availability.start_datetime)
-        %td= format_time(availability.end_datetime)
-        %td= link_to 'Edit', edit_availability_path(availability)
-%br
-= link_to 'Add', new_availability_path
+        %td.pt2= availability.name
+        %td.pt2= format_time(availability.start_datetime, format: "%A %-l%P")
+        %td.pt2= format_time(availability.end_datetime, format: "%-l%P")
+        %td.pt2.tr= link_to 'Edit', edit_availability_path(availability)
+
+.fixed.bottom-0.left-0.right-0.shadow-1.bg-white
+  .flex.justify-center.pa3
+    .mw6.w-100.ph5-ns
+      = link_to 'Add', new_availability_path, class: 'no-underline black w-100 tc bg-yellow pa3 ttu tracked br2 db fw6'
