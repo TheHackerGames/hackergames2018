@@ -12,8 +12,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.new(start_datetime: start_datetime, end_datetime: end_datetime)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     Availability.create!(availability_params.merge(user: current_user))
@@ -28,8 +27,15 @@ class AvailabilitiesController < ApplicationController
   def search_form; end
 
   def search
-    time = search_params[:time]
-    @availabilities = Availability.where('? BETWEEN start_datetime AND end_datetime', time)
+    @time = search_params[:time]
+    @latitude = search_params[:latitude].to_f
+    @longitude = search_params[:longitude].to_f
+    @within = search_params[:within].to_f
+
+    @availabilities = Availability.where('? BETWEEN start_datetime AND end_datetime', @time)
+                                  .near([@latitude, @longitude], @within)
+
+    @availabilities_json = @availabilities.map.with_index { |a, i| a.attributes.merge('label' => i.to_s) }
   end
 
   def request_meeting

@@ -14,7 +14,7 @@ $(function() {
 
   var autocomplete;
   var input = $locationAutocompleteInput.get()[0];
-  var locationType = input.dataset.locationType || "(regions)";
+  var locationType = input.dataset.locationType || "(regions)"
   var options = {
     componentRestrictions: { country: "uk" },
     types: [locationType]
@@ -26,26 +26,35 @@ $(function() {
 
 $(function initMap() {
   var mapContainer = document.getElementById("map");
-
   if (mapContainer == null) return;
 
   var mapData = mapContainer.dataset;
   var markers = JSON.parse(mapData.markers);
 
-  var mapCenter = { lat: markers[0].latitude, lng: markers[0].longitude };
+  var mapCenter = JSON.parse(mapData.center)
 
   var map = new google.maps.Map(mapContainer, {
     zoom: 10,
     center: mapCenter
   });
 
-  markers.forEach(function(marker) {
-    var latitude = marker.latitude;
-    var longitude = marker.longitude;
+  var latlngList = [];
 
-    new google.maps.Marker({
-      position: { lat: latitude, lng: longitude },
-      map: map
-    });
+  markers.forEach(function(marker){
+    var markerLocation = { lat: marker.latitude, lng: marker.longitude }
+    latlngList.push(new google.maps.LatLng (marker.latitude, marker.longitude));
+
+    new google.maps.Marker({ position: markerLocation, map: map, label: marker.label });
   });
+
+  new google.maps.Marker({ position: mapCenter, map: map, icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png" });
+  latlngList.push(new google.maps.LatLng (mapCenter.lat, mapCenter.lng));
+
+  var bounds = new google.maps.LatLngBounds();
+  latlngList.forEach(function(n){
+     bounds.extend(n);
+  });
+  map.setCenter(bounds.getCenter()); //or use custom center
+  map.fitBounds(bounds);
+
 });

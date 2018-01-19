@@ -4,6 +4,8 @@
 
   Location #{text_field_tag :location, nil, data: { location_autocomplete: 1 }}
   %br
-  Around #{text_field_tag :time, Time.zone.now}
+  Within #{text_field_tag :within}
+  %br
+  Around #{text_field_tag :time, Availability.first.start_datetime + 1.minute }
   %br
   = submit_tag 'Search'
